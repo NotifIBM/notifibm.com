@@ -44,23 +44,34 @@ export const newFeatures = [
 ];
 
 export const insights = [
+  // {
+  //   imgUrl: '/planet-06.png',
+  //   title: 'How NotifIBM is transforming the way students receive results',
+  //   subtitle:
+  //     'NotifIBM is revolutionizing the way Sri Lankan students receive their academic results. With its user-friendly platform and instant notifications, students can easily keep track of their academic progress and stay on top of their studies.',
+  // },
   {
-    imgUrl: '/planet-06.png',
-    title: 'How NotifIBM is transforming the way students receive results',
+    imgUrl:
+      'https://cdn.hashnode.com/res/hashnode/image/upload/v1680536679599/50fe845e-9f3f-4eaf-9812-445f40d1b11c.png?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp',
+    title: 'Introducing NotifIBM',
     subtitle:
-      'NotifIBM is revolutionizing the way Sri Lankan students receive their academic results. With its user-friendly platform and instant notifications, students can easily keep track of their academic progress and stay on top of their studies.',
+      'Introducing NotifIBM - the ultimate solution for NIBM Sri Lanka students who are tired of constantly checking the university website for exam results and struggling to...',
+    url: 'https://blog.notifibm.com/introducing-notifibm',
   },
   {
-    imgUrl: '/planet-07.png',
-    title: '5 ways NotifIBM is improving the student experience',
+    imgUrl:
+      'https://cdn.hashnode.com/res/hashnode/image/upload/v1680623866890/d4ef7342-0ead-47a7-8674-48c8ba2f09b6.png?w=1600&h=840&fit=crop&crop=entropy&auto=compress,format&format=webp',
+    title: 'NotifIBM: A Name That Represents So Much More',
     subtitle:
-      'NotifIBM is more than just a result notification app - it is a tool that is transforming the student experience in Sri Lanka. From its GPA calculator to its personalized notifications, here are five ways NotifIBM is making a difference for students.',
+      'The name NotifIBM may sound simple at first glance, but there is a deeper significance to it that goes beyond just being a combination of the words "notification" and "IBM".',
+    url: 'https://blog.notifibm.com/notifibm-a-name-that-represents-so-much-more',
   },
   {
     imgUrl: '/planet-08.png',
     title: 'The future of education: how NotifIBM is leading the way',
     subtitle:
       'NotifIBM is at the forefront of a new era in education, one where technology is revolutionizing the way students learn and interact with their academic progress. In this blog post, we explore how NotifIBM is leading the way in this exciting new era of education.',
+    url: 'https://blog.notifibm.com',
   },
 ];
 

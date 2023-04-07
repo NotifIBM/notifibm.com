@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 import styles from '../styles';
 import { slideIn, staggerContainer, textVariant } from '../utils/motion';
+import Image from 'next/image';
 
 const Hero = () => (
   <section className={`${styles.yPaddings} sm:pl-16 pl-6 h-screen `}>
@@ -40,8 +41,16 @@ const Hero = () => (
 
         <a href="#explore">
           <div className="w-full flex justify-end sm:-mt-[70px] pr-[40px]  z-10 pb-12 bottom-2">
-            <img
+            {/* <img
               src="/stamp.png"
+              alt="stamp"
+              className="sm:w-[155px] w-[100px] sm:h-[155px] h-[100px] object-contain stamp-animate bottom-5 rounded-full" style={{ "--animation-duration": "1s" }}
+            /> */}
+            <Image
+              src="/stamp.png"
+              width={155}
+              height={155}
+              quality={100}
               alt="stamp"
               className="sm:w-[155px] w-[100px] sm:h-[155px] h-[100px] object-contain stamp-animate bottom-5 rounded-full" style={{ "--animation-duration": "1s" }}
             />

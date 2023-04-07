@@ -7,7 +7,6 @@ import {
   Hero,
   Insights,
   WhatsNew,
-  World,
 } from '../sections';
 
 const Page = () => (

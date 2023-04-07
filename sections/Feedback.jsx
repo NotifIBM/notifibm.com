@@ -51,8 +51,11 @@ const Feedback = () => (
           variants={zoomIn(0.4, 1)}
           className="lg:block hidden absolute -left-[10%] top-[3%]"
         >
-          <img
+          <Image
             src="/stamp.png"
+            width={155}
+            height={155}
+            quality={100}
             alt="stamp"
             className="w-[155px] h-[155px] object-contain rounded-full"
           />
