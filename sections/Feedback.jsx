@@ -38,14 +38,15 @@ const Feedback = () => (
         variants={fadeIn('left', 'tween', 0.2, 1)}
         className="relative flex-1 flex justify-center items-center"
       >
-        <Image
-          src="/planet-09.png"
-          width={4908}
-          height={2259}
-          quality={100}
-          alt="planet-09"
-          className="w-full lg:h-[610px] h-auto min-h-[210px] object-cover rounded-[40px]"
-        />
+        <div className="w-full lg:h-[610px] h-auto min-h-[210px]">
+          <Image
+            src="/planet-09.png"
+            fill
+            quality={100}
+            alt="planet-09"
+            className="w-full lg:h-[610px] h-auto min-h-[210px] object-cover rounded-[40px]"
+          />
+        </div>
 
         <motion.div
           variants={zoomIn(0.4, 1)}

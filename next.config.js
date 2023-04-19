@@ -7,6 +7,7 @@ const nextConfig = {
   images: {
     domains: ['cdn.hashnode.com', 'supunsathsara.com'],
   },
+  pageExtensions: ['mdx', 'md', 'jsx', 'js', 'tsx', 'ts'],
 };
 
 module.exports = nextConfig;

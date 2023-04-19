@@ -2,9 +2,10 @@
 
 import { motion } from 'framer-motion';
 
+import Image from 'next/image';
+import Link from 'next/link';
 import styles from '../styles';
 import { slideIn, staggerContainer, textVariant } from '../utils/motion';
-import Image from 'next/image';
 
 const Hero = () => (
   <section className={`${styles.yPaddings} sm:pl-16 pl-6 h-screen `}>
@@ -23,7 +24,7 @@ const Hero = () => (
           variants={textVariant(1.2)}
           className="flex flex-row justify-center items-center"
         >
-          <h4 className={styles.heroSubHeading}>Notification, Inspiration, Better Marks</h4>
+          <h2 className={styles.heroSubHeading}>Notification, Inspiration, Better Marks</h2>
         </motion.div>
       </div>
 
@@ -31,31 +32,37 @@ const Hero = () => (
         variants={slideIn('right', 'tween', 0.2, 1)}
         className="relative w-full md:-mt-[20px] -mt-[12px]"
       >
-        {/* <div className="absolute w-full h-[300px] hero-gradient rounded-tl-[140px] z-[0] -top-[30px]" /> */}
-
-        {/* <img
-          src="/cover.png"
-          alt="hero_cover"
-          className="w-full sm:h-[500px] h-[350px] object-cover rounded-tl-[140px] z-10 relative"
-        /> */}
-
-        <a href="#explore">
-          <div className="w-full flex justify-end sm:-mt-[70px] pr-[40px]  z-10 pb-12 bottom-2">
-            {/* <img
-              src="/stamp.png"
-              alt="stamp"
-              className="sm:w-[155px] w-[100px] sm:h-[155px] h-[100px] object-contain stamp-animate bottom-5 rounded-full" style={{ "--animation-duration": "1s" }}
-            /> */}
+        <div className="w-full flex justify-end sm:-mt-[70px] pr-[40px]  z-10 pb-12 lg:pb-0 bottom-2">
+          <a href="#explore">
             <Image
               src="/stamp.png"
+              loading="eager"
               width={155}
               height={155}
               quality={100}
               alt="stamp"
-              className="sm:w-[155px] w-[100px] sm:h-[155px] h-[100px] object-contain stamp-animate bottom-5 rounded-full" style={{ "--animation-duration": "1s" }}
+              className="sm:w-[155px] w-[100px] sm:h-[155px] h-[100px] object-contain stamp-animate bottom-5 rounded-full" style={{ '--animation-duration': '1s' }}
             />
-          </div>
-        </a>
+          </a>
+
+        </div>
+        {/* <div className="flex justify-center items-center">
+          <a href="/gpa">
+            <button type="button" className="mx-auto bg-transparent hover:bg-white text-white font-semibold hover:text-[#1a2330] py-2 px-8 border border-blue-500 hover:border-transparent rounded">
+              GPA Calculator
+            </button>
+          </a>
+        </div> */}
+      </motion.div>
+      <motion.div
+        variants={textVariant(1.2)}
+        className="flex flex-col lg:flex-row justify-center items-center gap-8"
+      >
+        <Link href="/gpa" title="GPA Calculator">
+          <button type="button" className="mx-auto bg-transparent hover:bg-white text-white font-semibold hover:text-[#1a2330] py-2 px-8 border border-blue-500 hover:border-transparent rounded">
+            GPA Calculator
+          </button>
+        </Link>
       </motion.div>
     </motion.div>
   </section>

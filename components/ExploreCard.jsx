@@ -15,10 +15,9 @@ const ExploreCard = ({ id, imgUrl, title, description, index, active, handleClic
   >
     <Image
       src={imgUrl}
-      width={575}
-      height={250}
+      fill
       quality={100}
-      alt="planet-04"
+      alt={title}
       className="absolute w-full h-full object-cover rounded-[24px]"
     />
     {active !== id ? (

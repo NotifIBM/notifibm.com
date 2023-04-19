@@ -8,9 +8,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "npm run build && next export -o _static"
+    "export": "npm run build && next export -o _static",
+    "prod": "vercel --prod"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.18.0",
     "eslint-config-next": "13.0.3",
     "framer-motion": "^7.6.7",
     "next": "13.0.3",

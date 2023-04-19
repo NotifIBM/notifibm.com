@@ -1,13 +1,13 @@
-import { Footer, Navbar } from '../components';
 import {
   About,
   Explore,
   Feedback,
+  Insights,
   GetStarted,
   Hero,
-  Insights,
   WhatsNew,
 } from '../sections';
+import Footer from '../components/Footer';
 
 const Page = () => (
   <div className="bg-primary-black overflow-hidden">

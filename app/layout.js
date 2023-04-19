@@ -1,12 +1,16 @@
 import '../styles/globals.css';
-import { Footer, Navbar } from '../components';
+import { Navbar } from '../components';
 
 const RootLayout = ({ children }) => (
   <html lang="en">
     <head>
-      <link
+      {/* <link
         rel="stylesheet"
         href="https://stijndv.com/fonts/Eudoxus-Sans.css"
+      /> */}
+      <link
+        rel="stylesheet"
+        href="/fonts/Eudoxus-Sans.css"
       />
     </head>
     <body className="overflow-auto scrollbar-hidden bg-primary-black">

@@ -23,18 +23,20 @@ const About = () => (
         className="mt-[8px] font-normal sm:text-[32px] text-[20px] text-center text-secondary-white"
       >
         Welcome to <span className="font-extrabold text-white">NotifIBM</span>, the ultimate academic companion for students at NIBM Sri Lanka.
-        <br/>Our web app offers timely notifications and a user-friendly GPA calculator to help you stay on top of your academic progress and achieve better grades. 
-        
-        <br/>With <span className="font-extrabold text-white">NotifIBM</span>, you'll never miss an important result update and can track your performance easily.
-       
+        <br />Our web app offers timely notifications and a user-friendly GPA calculator to help you stay on top of your academic progress and achieve better grades.
+
+        <br />With <span className="font-extrabold text-white">NotifIBM</span>, you'll never miss an important result update and can track your performance easily.
+
       </motion.p>
 
-      <motion.img
-        variants={fadeIn('up', 'tween', 0.3, 1)}
-        src="/arrow-down.svg"
-        alt="arrow down"
-        className="w-[18px] h-[28px] object-contain mt-[28px]"
-      />
+      <a href="#explore">
+        <motion.img
+          variants={fadeIn('up', 'tween', 0.3, 1)}
+          src="/arrow-down.svg"
+          alt="arrow down"
+          className="w-[18px] h-[28px] object-contain mt-[28px] animate-bounce"
+        />
+      </a>
     </motion.div>
   </section>
 );
