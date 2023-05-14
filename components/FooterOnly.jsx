@@ -29,12 +29,14 @@ const FooterOnly = () => (
 
           <div className="flex gap-4">
             {socials.map((social) => (
-              <img
-                key={social.name}
-                src={social.url}
-                alt={social.name}
-                className="w-[24px] h-[24px] object-contain cursor-pointer"
-              />
+              <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer">
+                <img
+                  key={social.name}
+                  src={social.image}
+                  alt={social.name}
+                  className="w-[24px] h-[24px] object-contain cursor-pointer"
+                />
+              </a>
             ))}
           </div>
         </div>
@@ -53,9 +55,12 @@ const FooterOnly = () => (
             <Link href="/privacy-policy">
               <p className="cursor-pointer">Privacy Policy</p>
             </Link>
+            |
             <Link href="/terms">
               <p className="cursor-pointer">Terms of Service</p>
             </Link>
+            |
+            <a href="http://status.notifibm.com" target="_blank" rel="noopener noreferrer">status <span className="opacity-100 animate-pulse">🟢</span></a>
           </div>
 
         </div>

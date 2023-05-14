@@ -78,11 +78,13 @@ export const insights = [
 export const socials = [
   {
     name: 'twitter',
-    url: '/twitter.svg',
+    image: '/twitter.svg',
+    url: 'https://twitter.com/notifibm',
   },
   {
     name: 'instagram',
-    url: '/instagram.svg',
+    image: '/instagram.svg',
+    url: 'https://instagram.com/notifibm',
   },
   // {
   //   name: 'facebook',
