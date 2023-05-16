@@ -1,6 +1,7 @@
 /* eslint-disable comma-dangle */
 import { NextResponse } from 'next/server';
 import calculateGPA from '../../../lib/calculateGPA';
+import { redis } from '../../../lib/redis';
 
 function getTableRows(html) {
   // console.log(html);
@@ -54,6 +55,11 @@ export default async function POST(req) {
   const { studentID, program } = body;
   // console.log(studentID);
 
+  const cachedData = await redis.get(studentID);
+  if (cachedData) {
+    return NextResponse.json(cachedData);
+  }
+
   const formData = new URLSearchParams({
     'F[Programme]': 14,
     'F[Batch]': 6509,
@@ -87,6 +93,8 @@ export default async function POST(req) {
     }
 
     const gpa = await calculateGPA(courses, parseInt(program, 10));
+    const data = JSON.stringify({ gpa, courses });
+    await redis.set(studentID, data, { ex: 1200 });
     return NextResponse.json({ gpa, courses });
   } catch (error) {
     console.error(error);
