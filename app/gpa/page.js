@@ -86,6 +86,14 @@ const Page = () => {
       });
 
       const data = await response.json();
+      // check status is 429
+      if (response.status === 429) {
+        // throw new Error('Too Many Requests');
+        alert('Too Many Requests');
+        console.log('Too Many Requests');
+        setLoading(false);
+        return;
+      }
       setGPA(parseFloat(data.gpa));
       setCourses(data.courses);
     } catch (error) {
