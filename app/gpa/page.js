@@ -120,7 +120,6 @@ const Page = () => {
       if (response.status === 400) {
         // throw new Error('Bad Request');
         toast.error('Bad Request');
-        console.log('Bad Request');
         setLoading(false);
         return;
       }
@@ -128,15 +127,16 @@ const Page = () => {
       if (response.status === 404) {
         // throw new Error('Not Found');
         toast.error('Not Found');
-        console.log('Not Found');
         setLoading(false);
         return;
       }
-      if (response.status !== 200 || !data || !data.gpa || !data.courses || data.gpa === 'NaN') {
+      if (response.status !== 200 || !data || !data.gpa || !data.courses) {
         toast.error('Something went wrong');
-        console.log('Something went wrong');
         setLoading(false);
         return;
+      }
+      if (data.gpa === 'NaN') {
+        toast.error('Incompatible Modules Found');
       }
       setGPA(parseFloat(data.gpa));
       setCourses(data.courses);
