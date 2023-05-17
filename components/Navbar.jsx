@@ -18,7 +18,7 @@ const Navbar = () => (
     <div
       className={`${styles.innerWidth} mx-auto flex justify-between gap-8`}
     >
-      <Link href="/" className="z-0" title="Home">
+      <Link href="/" className="z-0 my-auto" title="Home">
         <div className="w-[24px] h-[24px] object-contain relative">
           <Image
             src="/assets/logo-N-white.svg"
@@ -29,19 +29,28 @@ const Navbar = () => (
           />
         </div>
       </Link>
-      <Link href="/" className="z-0">
+      <Link href="/" className="z-0 my-auto">
         <h2 className="font-extrabold text-[24px] leading-[30.24px] text-white">
           NOTIFIBM
         </h2>
       </Link>
-      <div className="w-[24px] h-[24px] object-contain relative">
+      <div className="flex justify-between flex-wrap gap-5 z-0 my-auto">
+        <a href="https://app.notifibm.com" className="flex items-center h-fit">
+          <button type="button" className="flex items-center h-fit py-4 px-6 bg-transparent outline-1 ring-offset-blue-800 rounded-[32px]">
+            <span className="font-normal text-[16px] text-white">
+              Login
+            </span>
+          </button>
+        </a>
+      </div>
+      {/* <div className="w-[24px] h-[24px] object-contain relative">
         <Image
           src="/menu.svg"
           fill
           alt="menu"
           className="w-[24px] h-[24px] object-contain"
         />
-      </div>
+      </div> */}
     </div>
   </motion.nav>
 );

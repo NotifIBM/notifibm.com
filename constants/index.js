@@ -23,17 +23,17 @@ export const exploreWorlds = [
 ];
 
 export const startingFeatures = [
-  'Register for NotifIBM by entering your NIBM student ID number and email address.',
-  'Authenticate your self by entering the otp sent to you in the email.',
+  'Register for NotifIBM by entering your email address  and a password.',
+  'Once your email is confirmed, log in to the NotifIBM dashboard and complete your profile.',
   'The app will automatically fetch your exam results from the NIBM website and send you a SMS when they are released.',
 ];
 
 export const newFeatures = [
   {
-    imgUrl: '/vrpano.svg',
-    title: 'A Whatsapp Bot',
+    imgUrl: '/graduation-cap-icon.svg',
+    title: 'GPA Calculator',
     subtitle:
-      'we have added a new feature to the app, now you can see your results in a whatsApp bot',
+      'NotifIBM now has a GPA calculator that allows you to calculate your GPA based on your exam results.',
   },
   {
     imgUrl: '/headset.svg',
