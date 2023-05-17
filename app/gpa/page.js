@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 import { TitleText } from '../../components';
 
 const Page = () => {
@@ -18,8 +19,17 @@ const Page = () => {
   // Fetch program list
   useEffect(() => {
     fetch('/api/gpa/programs')
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('failed to fetch programs');
+        }
+        return response.json();
+      })
       .then((data) => {
+        if (!data) {
+          toast.error('Check your connection !');
+          return;
+        }
         const newProgramList = data.map((Program) => ({
           value: Program.web_value,
           label: Program.name,
@@ -43,7 +53,10 @@ const Page = () => {
         .then((data) => {
           setBatchList(data);
         })
-        .catch((error) => console.error(error))
+        .catch((error) => {
+          console.error(error);
+          toast.error('Something went wrong !');
+        })
         .finally(() => setDataFetch(false));
     }
   }, [program]);
@@ -59,16 +72,25 @@ const Page = () => {
         },
         body: JSON.stringify({ batch }),
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('failed to fetch index list');
+          }
+          return response.json();
+        })
         .then((data) => {
           setIndexList(data);
         })
-        .catch((error) => console.error(error))
+        .catch((error) => {
+          console.error(error);
+          toast.error('Something went wrong !');
+        })
         .finally(() => setDataFetch(false));
     }
   }, [batch]);
 
   const handleSubmit = async (e) => {
+    toast.dismiss();
     e.preventDefault();
     setGPA(null);
     setLoading(true); // set loading to true
@@ -89,8 +111,30 @@ const Page = () => {
       // check status is 429
       if (response.status === 429) {
         // throw new Error('Too Many Requests');
-        alert('Too Many Requests');
+        toast.error('Too Many Requests');
         console.log('Too Many Requests');
+        setLoading(false);
+        return;
+      }
+      // check status is 400
+      if (response.status === 400) {
+        // throw new Error('Bad Request');
+        toast.error('Bad Request');
+        console.log('Bad Request');
+        setLoading(false);
+        return;
+      }
+      // check status is 404
+      if (response.status === 404) {
+        // throw new Error('Not Found');
+        toast.error('Not Found');
+        console.log('Not Found');
+        setLoading(false);
+        return;
+      }
+      if (response.status !== 200 || !data || !data.gpa || !data.courses || data.gpa === 'NaN') {
+        toast.error('Something went wrong');
+        console.log('Something went wrong');
         setLoading(false);
         return;
       }
@@ -98,6 +142,7 @@ const Page = () => {
       setCourses(data.courses);
     } catch (error) {
       console.error(error);
+      toast.error('Something went wrong');
     } finally {
       setLoading(false); // set loading to false
     }

@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import { Navbar } from '../components';
+import ToastProvider from '../components/ui/ToastProvider';
 
 const RootLayout = ({ children }) => (
   <html lang="en">
@@ -14,8 +15,10 @@ const RootLayout = ({ children }) => (
       />
     </head>
     <body className="overflow-auto scrollbar-hidden bg-primary-black">
-      <Navbar />
-      {children}
+      <ToastProvider>
+        <Navbar />
+        {children}
+      </ToastProvider>
     </body>
   </html>
 );
