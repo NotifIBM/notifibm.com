@@ -169,7 +169,7 @@ const Page = () => {
               setProgram(e.target.value);
             }}
           >
-            <option value="" className="text-sm">Please select Batch</option>
+            <option value="" className="text-sm">Please select Program</option>
             {programList && programList.map((item) => (
               <option key={item.value} value={item.value}>
                 {item.label}

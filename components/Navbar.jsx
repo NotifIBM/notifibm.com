@@ -19,7 +19,7 @@ const Navbar = () => (
       className={`${styles.innerWidth} mx-auto flex justify-between gap-8`}
     >
       <Link href="/" className="z-0 my-auto" title="Home">
-        <div className="w-[24px] h-[24px] object-contain relative">
+        <div className="w-[24px] h-[24px] object-contain relative px-10">
           <Image
             src="/assets/logo-N-white.svg"
             fill
