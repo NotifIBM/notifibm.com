@@ -128,7 +128,7 @@ export default async function POST(req) {
     }
 
     const { gpa, gpaNonRepeat } = await calculateGPA(courses, parseInt(program, 10));
-    const data = JSON.stringify({ gpa, courses });
+    const data = JSON.stringify({ gpa, gpaNonRepeat, courses });
     await redis.set(studentID, data, { ex: 1200 });
     return NextResponse.json({ gpa, gpaNonRepeat, courses });
   } catch (error) {
