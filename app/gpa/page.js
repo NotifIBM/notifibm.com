@@ -14,7 +14,9 @@ const Page = () => {
   const [loading, setLoading] = useState(false); // add loading state
   const [dataFetch, setDataFetch] = useState(false);
   const [gpa, setGPA] = useState(null);
+  const [gpa2, setGPA2] = useState(null);
   const [courses, setCourses] = useState([null]);
+  const [enabled, setEnabled] = useState(true);
 
   // Fetch program list
   useEffect(() => {
@@ -139,6 +141,7 @@ const Page = () => {
         toast.error('Incompatible Modules Found');
       }
       setGPA(parseFloat(data.gpa));
+      setGPA2(parseFloat(data.gpaNonRepeat));
       setCourses(data.courses);
     } catch (error) {
       console.error(error);
@@ -146,6 +149,12 @@ const Page = () => {
     } finally {
       setLoading(false); // set loading to false
     }
+  };
+
+  const Toggle = () => {
+    setGPA(gpa2);
+    setGPA2(gpa);
+    setEnabled(!enabled);
   };
 
   return (
@@ -279,20 +288,46 @@ const Page = () => {
                 <thead>
                   <tr>
                     <th className="text-sm md:text-xl underline font-bold text-white px-2">Subject</th>
+                    <th className="text-xs md:text-xl underline font-bold text-white px-2">CW</th>
+                    <th className="text-xs md:text-xl underline font-bold text-white px-2">Exam</th>
                     <th className="text-sm md:text-xl underline font-bold text-white px-2">Final Grade</th>
-                    <th className="text-sm md:text-xl underline font-bold text-white px-2">Points</th>
+                    <th className="text-xs hidden sm:block md:text-xl underline font-bold text-white px-2">Points</th>
                   </tr>
                 </thead>
                 <tbody>
                   {courses && courses.map((course) => (
-                    <tr key={course.Subject}>
-                      <td className="text-sm md:text-xl font-bold text-secondary-white px-2">{course.Subject}</td>
-                      <td className="text-sm md:text-xl font-bold text-secondary-white px-2">{course.FinalGrade}</td>
-                      <td className="text-sm md:text-xl font-bold text-secondary-white px-2">{course.Points}</td>
+                    <tr key={course.Id}>
+                      <td className="text-sm md:text-xl font-bold text-secondary-white px-2">{course.Subject} {course.Repeat && <span className="text-red-600 font-extrabold">*</span>}</td>
+                      <td className="text-xs md:text-xl font-bold text-secondary-white px-2">{course.CW}</td>
+                      <td className="text-xs md:text-xl font-bold text-secondary-white px-2">{course.Exam}</td>
+                      <td className="text-sm md:text-xl font-bold text-secondary-white px-2">{course.FinalGrade} </td>
+                      <td className="text-xs hidden sm:block md:text-xl font-bold text-secondary-white px-2">{course.Points}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+              <div className="flex flex-col gap-3 float-right">
+                <p className="text-xs font-semibold hover:font-extrabold text-red-600 mt-2 float-right mr-3 md:mr-12">* Repeated Modules</p>
+                <div className="flex">
+                  <label className="inline-flex relative items-center mr-5 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      className="sr-only peer"
+                      checked={enabled}
+                      readOnly
+                    />
+                    <div
+                      onClick={
+                        Toggle
+                      }
+                      className="w-11 h-6 bg-gray-500 rounded-full peer  peer-focus:ring-green-300  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"
+                    />
+                    <span className="ml-2 text-sm font-medium text-secondary-white">
+                      Include Repeated Modules
+                    </span>
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
 

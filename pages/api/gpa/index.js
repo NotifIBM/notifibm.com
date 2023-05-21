@@ -3,6 +3,37 @@ import { NextResponse } from 'next/server';
 import calculateGPA from '../../../lib/calculateGPA';
 import { redis } from '../../../lib/redis';
 
+function convertToGradePoint(grade) {
+  switch (grade) {
+    case 'A+':
+      return 4.0;
+    case 'A':
+      return 4.0;
+    case 'A-':
+      return 3.7;
+    case 'B+':
+      return 3.3;
+    case 'B':
+      return 3.0;
+    case 'B-':
+      return 2.7;
+    case 'C+':
+      return 2.3;
+    case 'C':
+      return 2.0;
+    case 'C-':
+      return 1.7;
+    case 'D+':
+      return 1.3;
+    case 'D':
+      return 1.0;
+    case 'E':
+      return 0.0;
+    default:
+      return 0.0;
+  }
+}
+
 function getTableRows(html) {
   // console.log(html);
   const rows = [];
@@ -40,7 +71,11 @@ function getTableRows(html) {
     }
 
     Subject = Subject.split('/')[Subject.split('/').length - 1];
-    gradePoints.push({ Subject, FinalGrade, Points });
+    let Repeat = false;
+    if (convertToGradePoint(CW) < 2.0 || convertToGradePoint(Exam) < 2.0 || convertToGradePoint(FinalGrade) < 2.0) {
+      Repeat = true;
+    }
+    gradePoints.push({ Id, Subject, CW, Exam, FinalGrade, Points, Repeat });
   }
 
   return gradePoints;
@@ -92,10 +127,10 @@ export default async function POST(req) {
       return NextResponse.json({ gpa: 0, courses: [] });
     }
 
-    const gpa = await calculateGPA(courses, parseInt(program, 10));
+    const { gpa, gpaNonRepeat } = await calculateGPA(courses, parseInt(program, 10));
     const data = JSON.stringify({ gpa, courses });
     await redis.set(studentID, data, { ex: 1200 });
-    return NextResponse.json({ gpa, courses });
+    return NextResponse.json({ gpa, gpaNonRepeat, courses });
   } catch (error) {
     console.error(error);
     // res.status(500).json({ error: error.message });
