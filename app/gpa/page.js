@@ -143,6 +143,7 @@ const Page = () => {
       setGPA(parseFloat(data.gpa));
       setGPA2(parseFloat(data.gpaNonRepeat));
       setCourses(data.courses);
+      setEnabled(true);
     } catch (error) {
       console.error(error);
       toast.error('Something went wrong');
