@@ -114,7 +114,6 @@ const Page = () => {
       if (response.status === 429) {
         // throw new Error('Too Many Requests');
         toast.error('Too Many Requests');
-        console.log('Too Many Requests');
         setLoading(false);
         return;
       }
@@ -132,10 +131,13 @@ const Page = () => {
         setLoading(false);
         return;
       }
-      if (response.status !== 200 || !data || !data.gpa || !data.courses) {
+      if (response.status !== 200 || !data) {
         toast.error('Something went wrong');
         setLoading(false);
         return;
+      }
+      if (!data.gpa || !data.courses) {
+        toast.error('No Data Found');
       }
       if (data.gpa === 'NaN') {
         toast.error('Incompatible Modules Found');
@@ -143,11 +145,11 @@ const Page = () => {
       setGPA(parseFloat(data.gpa));
       setGPA2(parseFloat(data.gpaNonRepeat));
       setCourses(data.courses);
-      setEnabled(true);
     } catch (error) {
       console.error(error);
       toast.error('Something went wrong');
     } finally {
+      setEnabled(true);
       setLoading(false); // set loading to false
     }
   };
@@ -298,7 +300,7 @@ const Page = () => {
                 <tbody>
                   {courses && courses.map((course) => (
                     <tr key={course.Id}>
-                      <td className="text-sm md:text-xl font-bold text-secondary-white px-2">{course.Subject} {course.Repeat && <span className="text-red-600 font-extrabold">*</span>}</td>
+                      <td className="text-sm md:text-xl font-bold text-secondary-white px-2">{course.Subject}{course.Repeat && <span className="text-red-600 font-extrabold whitespace-nowrap">*</span>}</td>
                       <td className="text-xs md:text-xl font-bold text-secondary-white px-2">{course.CW}</td>
                       <td className="text-xs md:text-xl font-bold text-secondary-white px-2">{course.Exam}</td>
                       <td className="text-sm md:text-xl font-bold text-secondary-white px-2">{course.FinalGrade} </td>

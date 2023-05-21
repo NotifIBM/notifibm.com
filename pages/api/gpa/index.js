@@ -73,7 +73,11 @@ function getTableRows(html) {
     Subject = Subject.split('/')[Subject.split('/').length - 1];
     let Repeat = false;
     if (convertToGradePoint(CW) < 2.0 || convertToGradePoint(Exam) < 2.0 || convertToGradePoint(FinalGrade) < 2.0) {
-      Repeat = true;
+      if (convertToGradePoint(Exam) !== convertToGradePoint(FinalGrade)) {
+        Repeat = true;
+      } else if (convertToGradePoint(CW) !== 0) {
+        Repeat = true;
+      }
     }
     gradePoints.push({ Id, Subject, CW, Exam, FinalGrade, Points, Repeat });
   }
