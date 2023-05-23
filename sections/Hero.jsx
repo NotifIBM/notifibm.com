@@ -33,7 +33,7 @@ const Hero = () => (
         className="relative w-full md:-mt-[20px] -mt-[12px]"
       >
         <div className="w-full flex justify-end sm:-mt-[70px] pr-[40px]  z-10 pb-12 lg:pb-0 bottom-2">
-          <a href="#explore">
+          <a href="https://app.notifibm.com" title="Register With NotifIBM">
             <Image
               src="/stamp.png"
               loading="eager"
@@ -56,10 +56,16 @@ const Hero = () => (
       </motion.div>
       <motion.div
         variants={textVariant(1.2)}
-        className="flex flex-col lg:flex-row justify-center items-center gap-8"
+        className="flex flex-col justify-center items-center gap-5 my-10 md:my-0 lg:-mt-16 z-10"
       >
+        <a href="https://app.notifibm.com" title="Get Started">
+          <button type="button" className="mx-auto bg-gradient-to-b w-max text-primary-black font-semibold from-slate-50 to-blue-100 px-10 py-3 rounded-2xl shadow-blue-400 shadow-md hover border-b border-blue-200 hover:shadow-sm transition-all duration-500">
+            Get Started
+          </button>
+        </a>
+
         <Link href="/gpa" title="GPA Calculator">
-          <button type="button" className="mx-auto bg-transparent hover:bg-white text-white font-semibold hover:text-[#1a2330] py-2 px-8 border border-blue-500 hover:border-transparent rounded">
+          <button type="button" className="mx-auto bg-transparent hover:bg-white text-white font-semibold hover:text-[#1a2330] py-2 px-7 border border-blue-500 hover:border-transparent rounded">
             GPA Calculator
           </button>
         </Link>
