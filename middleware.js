@@ -11,7 +11,7 @@ export default async function middleware(req) {
     if (!success) {
       return NextResponse.rewrite('https://notifibm/api/rate-limit');
     }
-    const requestHeaders = new Headers(req.headers);
+    const requestHeaders = new Headers();
     requestHeaders.set('X-RateLimit-Limit', limit);
     requestHeaders.set('X-RateLimit-Remaining', remaining);
 
