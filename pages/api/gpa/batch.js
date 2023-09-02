@@ -5,7 +5,7 @@ import { redis } from '../../../lib/redis';
 export default async function POST(req) {
   if (req.method !== 'POST') {
     // return NextResponse.json({ error: 'Method Not Allowed' }, { status: 405 });
-    const { data } = await supabase.from('batches').select('id,name,value').eq('program_value', '15');
+    const { data } = await supabase.from('batches').select('id,name,value').eq('program_value', '1110').order('value', { ascending: false });
 
     return NextResponse.json(data);
   }
@@ -20,7 +20,7 @@ export default async function POST(req) {
     return NextResponse.json(cachedData);
   }
   // console.log(program);
-  const { data } = await supabase.from('batches').select('id,name,value').eq('program_value', program);
+  const { data } = await supabase.from('batches').select('id,name,value').eq('program_value', program).order('value', { ascending: false });
   // console.log(data);
 
   // cache data
