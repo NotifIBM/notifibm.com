@@ -79,6 +79,8 @@ function getTableRows(html) {
         Repeat = true;
       } else if (FinalGrade.toUpperCase() === 'X') {
         Repeat = true;
+      } else if (FinalGrade.toUpperCase() === 'E') {
+        Repeat = true;
       }
     }
     gradePoints.push({ Id, Subject, CW, Exam, FinalGrade, Points, Repeat });
