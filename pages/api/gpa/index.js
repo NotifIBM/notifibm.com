@@ -64,6 +64,15 @@ function getTableRows(html) {
     let FinalGrade;
     let Points;
 
+    if (tdElements == null) {
+      // eslint-disable-next-line no-continue
+      continue;
+    }
+    if (tdElements.length < 5) {
+      // eslint-disable-next-line no-continue
+      continue;
+    }
+
     if (tdElements) {
       // eslint-disable-next-line no-unused-vars, operator-linebreak
       [Id, Subject, Special, ExamDate, CW, Exam, FinalGrade, Points] =
