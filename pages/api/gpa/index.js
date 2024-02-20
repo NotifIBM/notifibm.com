@@ -92,7 +92,7 @@ function getTableRows(html) {
         Repeat = true;
       }
     }
-    gradePoints.push({ Id, Subject, CW, Exam, FinalGrade, Points, Repeat });
+    gradePoints.push({ Id, Subject, ExamDate, CW, Exam, FinalGrade, Points, Repeat });
   }
 
   return gradePoints;
